@@ -75,3 +75,8 @@ export CONTAINER_IMAGE_TAG="demo"
 export DB_CONNECTION_STRING="jdbc:sqlserver://$SQL_SERVER_NAME.database.windows.net:1433;database=$DATABASE_NAME;user=$SQL_ADMIN_USER@$SQL_SERVER_NAME;password=$SQL_ADMIN_PASSWORD;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
 
 ```
+* Build Sonarqube Docker image and push it to private registry
+
+```
+
+```
