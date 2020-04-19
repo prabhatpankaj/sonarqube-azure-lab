@@ -63,7 +63,7 @@ export APP_SERVICE_NAME="$PROJECT_PREFIX-sonarqube-app-service"
 export APP_SERVICE_SKU="S1"
 
 # Container image related
-export CONTAINER_REGISTRY_NAME="Sonarqubeacruniquename"
+export CONTAINER_REGISTRY_NAME="sonarqubeacruniquename"
 export CONTAINER_REGISTRY_FQDN="$CONTAINER_REGISTRY_NAME.azurecr.io"
 export REG_ADMIN_USER=`az keyvault secret show -n container-registry-admin --vault-name $YOUR_KEY_VAULT | jq -r '.value'`
 export REG_ADMIN_PASSWORD=`az keyvault secret show -n container-registry-admin-password --vault-name $YOUR_KEY_VAULT | jq -r '.value'`
