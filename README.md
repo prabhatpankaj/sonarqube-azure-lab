@@ -47,7 +47,7 @@ az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'container-registry-a
 ```
 
 # General
-export PROJECT_PREFIX="demo"
+export PROJECT_PREFIX="randomuniquename123"
 export RESOURCE_GROUP_NAME="$PROJECT_PREFIX-sonarqube-rg"
 export LOCATION="eastus"
 
