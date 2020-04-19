@@ -78,5 +78,14 @@ export DB_CONNECTION_STRING="jdbc:sqlserver://$SQL_SERVER_NAME.database.windows.
 * Build Sonarqube Docker image and push it to private registry
 
 ```
+# Checkout the repository containing the Dockerfile and the config script
+git clone https://github.com/prabhatpankaj/sonarqube-azure-lab.git && cd sonarqube-azure-lab
 
+# Log into your Azure Container Registry  
+az acr login --name $CONTAINER_REGISTRY_NAME
+
+# Build the image and push to the registry
+docker build -t $CONTAINER_IMAGE_NAME:$CONTAINER_IMAGE_TAG dockerfiles/sonarqube/.
+docker tag $CONTAINER_IMAGE_NAME:$CONTAINER_IMAGE_TAG "$CONTAINER_REGISTRY_FQDN/$CONTAINER_IMAGE_NAME:$CONTAINER_IMAGE_TAG"
+docker push "$CONTAINER_REGISTRY_FQDN/$CONTAINER_IMAGE_NAME:$CONTAINER_IMAGE_TAG"
 ```
