@@ -37,9 +37,9 @@ az acr create --resource-group SonarqubeResourceGroup --name Sonarqubeacruniquen
 
 ```
 export YOUR_KEY_VAULT="SonarqubeResource-Vault2"
-az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'sonarqube-sql-admin' --value 'admin'
+az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'sonarqube-sql-admin' --value 'admindemo'
 az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'sonarqube-sql-admin-password' --value 'pass1234'
-az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'container-registry-admin' --value 'admin'
+az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'container-registry-admin' --value 'admindemo'
 az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'container-registry-admin-password' --value 'pass1234'
 
 ```
