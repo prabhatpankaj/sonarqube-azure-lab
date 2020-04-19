@@ -89,3 +89,35 @@ docker build -t $CONTAINER_IMAGE_NAME:$CONTAINER_IMAGE_TAG dockerfiles/sonarqube
 docker tag $CONTAINER_IMAGE_NAME:$CONTAINER_IMAGE_TAG "$CONTAINER_REGISTRY_FQDN/$CONTAINER_IMAGE_NAME:$CONTAINER_IMAGE_TAG"
 docker push "$CONTAINER_REGISTRY_FQDN/$CONTAINER_IMAGE_NAME:$CONTAINER_IMAGE_TAG"
 ```
+
+* Create the managed SQL database
+
+```
+# Add resource group; tag appropriately :-)
+az group create \
+    --name $RESOURCE_GROUP_NAME \
+    --location $LOCATION \
+    --tag 'createdBy=admin' 'createdFor=Resource group for SonarQube components'
+
+# Create sql server and database
+az sql server create \
+    --name $SQL_SERVER_NAME \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --location $LOCATION \
+    --admin-user $SQL_ADMIN_USER \
+    --admin-password $SQL_ADMIN_PASSWORD
+az sql db create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --server $SQL_SERVER_NAME \
+    --name $DATABASE_NAME \
+    --service-objective $DATABASE_SKU \
+    --collation "SQL_Latin1_General_CP1_CS_AS"
+
+# Set SQL server's firewall rules to accept requests from Azure services only (this is going to be our Azure Webapp)
+az sql server firewall-rule create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --server $SQL_SERVER_NAME -n "AllowAllWindowsAzureIps" \
+    --start-ip-address 0.0.0.0 \
+    --end-ip-address 0.0.0.0
+```
+
