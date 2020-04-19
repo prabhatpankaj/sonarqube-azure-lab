@@ -30,7 +30,7 @@ az keyvault create --name "SonarqubeResource-Vault2" --resource-group "Sonarqube
 * Create an Azure Container Registry
 
 ```
-az acr create --resource-group SonarqubeResourceGroup --name Sonarqubeacruniquename --sku Basic
+az acr create --resource-group SonarqubeResourceGroup --name sonarqubeacruniquename --sku Basic
 ```
 
 * Gather data to set env variables
@@ -38,9 +38,9 @@ az acr create --resource-group SonarqubeResourceGroup --name Sonarqubeacruniquen
 ```
 export YOUR_KEY_VAULT="SonarqubeResource-Vault2"
 az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'sonarqube-sql-admin' --value 'admindemo'
-az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'sonarqube-sql-admin-password' --value 'pass1234'
+az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'sonarqube-sql-admin-password' --value '01@Pass1234'
 az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'container-registry-admin' --value 'admindemo'
-az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'container-registry-admin-password' --value 'pass1234'
+az keyvault secret set --vault-name $YOUR_KEY_VAULT --name 'container-registry-admin-password' --value '01@Pass1234'
 
 ```
 * Here is the set of variables used throughout this guide. Notice we retrieve Azure Keyvault secrets using the Azure CLI and not with a Service Principal. This would be more secure but you Azure user account is required to be permitted to work with Service Principal users.
